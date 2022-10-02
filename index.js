@@ -1,14 +1,15 @@
 const express = require('express')
-const app = express()
 const mongoose = require('mongoose') 
 const cors = require('cors')
 require('dotenv').config()
 
+const app = express()
 app.use(cors())
 app.use(express.json())
 
 // Routes
-app.use('/product', require('./routes/product.route.js'))
+
+app.use('/products', require('./routes/product.route.js'))
 app.use('/mainwarehouse', require('./routes/mainWarehouse.route.js'))
 app.use('/remotewarehouse', require('./routes/remoteWarehouse.route.js'))
 
