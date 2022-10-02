@@ -8,7 +8,7 @@ const remoteWarehouseSchema = new Schema({
         required: true
     },
     location: {
-        type: [String],
+        type: String,
         maxlength: 50,
         required: true
     },
