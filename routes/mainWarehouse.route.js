@@ -1,19 +1,8 @@
-<<<<<<< Updated upstream
-const express = require('express')
-const app = express()
-const router = express.Router()
-
-//test
-app.use("/", (req, res) => {
-    res.json({message:"Hi There"})
-})
-
-=======
 const router = require('express').Router()
 const { findAllProductsWarehouse, createWarehouse } = require('../controllers/mainWarehouse.controller.js')
 
 
-// Get All Warehouse
+// Get All Warehouses
 router.get('/', async (req, res) => {
     try {
         const warehouses = await findAllProductsWarehouse()
@@ -35,5 +24,4 @@ router.post('/', async (req, res) => {
 })
 
 
->>>>>>> Stashed changes
 module.exports = router
