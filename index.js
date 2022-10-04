@@ -8,15 +8,10 @@ app.use(cors())
 app.use(express.json())
 
 // Routes
-
 app.use('/products', require('./routes/product.route.js'))
 app.use('/mainwarehouse', require('./routes/mainWarehouse.route.js'))
 app.use('/remotewarehouse', require('./routes/remoteWarehouse.route.js'))
 
-//test
-// app.use("/", (req, res) => {
-//     res.json({message:"Hi There"})
-// })
 
 const connnectToMongo = async () => {
     try {

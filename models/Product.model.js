@@ -7,14 +7,7 @@ const productSchema = new Schema({
         required: true
     },
     details: {
-<<<<<<< Updated upstream
-        name: {
-            type: String,
-        },
-        description: String,
-=======
         type: String,
->>>>>>> Stashed changes
         required: true
     },
     type: {
