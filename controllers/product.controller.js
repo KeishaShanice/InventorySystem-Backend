@@ -8,6 +8,7 @@ const findProductById = async id => {
         if (product == null) {
             throw { status: 204, msg: `No Product with the id ${id} was found`}
         }
+        return product
     } catch (err) {
         throw err
     }

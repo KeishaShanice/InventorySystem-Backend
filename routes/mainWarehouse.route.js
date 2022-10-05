@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const { findAllProductsWarehouse, findAllWarehouses, findWarehouseById, createWarehouse, updateWarehouse, deleteWarehouseById  } = require('../controllers/mainWarehouse.controller.js')
+const mongoose = require('mongoose')
 
 // Validate ObjectId middleware
 const validateObjectId = (req, res, next) => {

@@ -12,18 +12,13 @@ const remoteWarehouseSchema = new Schema({
         maxlength: 50,
         required: true
     },
-    product: {
+    product: [{
         type: mongoose.Types.ObjectId,
         ref: 'Product'
-    },
+    }],
     capacity:  {
         type: Number,
-        validate: [ inventoryAmount => inventoryAmount  <= 50 && inventoryAmount  >= 0, 'Inventory amount must be between 0 and 50 Items']
-    },
-    category: {
-        type: String,
-        enum: ['CD', "Collectable" ],
-        required: true
+        validate: [ inventoryAmount => inventoryAmount  <= 50 && inventoryAmount  >= 1, 'Inventory amount must be between 1 and 50 Items']
     }
 })
 
