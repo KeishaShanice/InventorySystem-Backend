@@ -1,6 +1,6 @@
 const RemoteWarehouse = require('../models/RemoteWarehouse.model.js')
 
-const findAllProductsRemoteWarehouses = async () => RemoteWarehouse.find().populate('product')
+const findAllProductsRemoteWarehouses = async () => await RemoteWarehouse.find().populate('product')
 
 //get all warehouses
 const findAllRemoteWarehouses = async () => RemoteWarehouse.find()

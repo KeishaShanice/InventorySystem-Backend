@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const { findAllProductsRemoteWarehouses,findAllRemoteWarehouses, findRemoteWarehouseById, createRemoteWarehouse, updateRemoteWarehouse, deleteRemoteWarehouseById } = require('../controllers/remoteWarehouse.controller.js')
+const mongoose = require('mongoose')
 
 // Validate ObjectId middleware
 const validateObjectId = (req, res, next) => {
@@ -23,7 +24,7 @@ router.get('/remoteproducts', async (req, res) => {
 
 
 // Get all remote warehouses
-router.get('/remote', async (req, res) => {
+router.get('/', async (req, res) => {
     const remoteWarehouse = await findAllRemoteWarehouses()
     res.json(remoteWarehouse)
 })
@@ -45,7 +46,7 @@ router.get('/:id', validateObjectId, async (req, res) => {
 router.post('/', async (req, res) => {
     try {
         const remoteWarehouse = await createRemoteWarehouse(req.body)
-        res.statusMessage(201).json(remoteWarehouse)
+        res.status(201).json(remoteWarehouse)
     } catch (err) {
         res.status(err?.status ?? 500).json(err)
     }
