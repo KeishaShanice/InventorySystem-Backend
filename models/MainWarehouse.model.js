@@ -14,13 +14,16 @@ const warehouseSchema = new Schema({
     },
     product: [ {
         type: mongoose.Types.ObjectId,
-        ref: 'Product'
+        ref: 'Product',
+        unique: true
     }],
     capacity:  {
         type: Number,
         validate: [ inventoryAmount => inventoryAmount  <= 100 && inventoryAmount  >= 1, 'Inventory amount must be between 0 and 100 Items']
     }
 })
+
+
 
 const Warehouse = mongoose.model('Warehouse', warehouseSchema, 'Warehouse')
 module.exports = Warehouse

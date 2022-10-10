@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { findAllProducts, findProductById, createProduct, updateProduct, deleteProductById} = require('../controllers/product.controller.js')
+const { findAllProducts, findProductById, createProduct, updateProduct, deleteProductById, addproductsToWarehouse} = require('../controllers/product.controller.js')
 const mongoose = require('mongoose')
 
 
@@ -25,6 +25,7 @@ router.get('/:id', validateObjectId, async (req, res) => {
     try {
         const product = await findProductById(req.params.id)
         res.json(product)
+        //res.json(product.details)
     } catch (err) {
         console.log(err)
         res.status(err?.status ?? 500).json(err)
@@ -36,6 +37,17 @@ router.get('/:id', validateObjectId, async (req, res) => {
 router.post('/', async (req, res) => {
     try {
         const product = await createProduct(req.body)
+        res.status(201).json(product)
+    } catch (err) {
+        res.status(err?.status ?? 500).json(err)
+    }
+})
+
+
+// Add A Product to warehouse
+router.patch('/add-product/:id', async (req, res) => {
+    try {
+        const product = await addproductsToWarehouse(req.params.id)
         res.status(201).json(product)
     } catch (err) {
         res.status(err?.status ?? 500).json(err)
